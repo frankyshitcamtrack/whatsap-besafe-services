@@ -1,5 +1,5 @@
 const {getContacts}=require('../services/googlesheet.service');
-const {insertContact}=require('../models/ymanebot-models/contact.model');
+/* const {insertContact}=require('../models/ymanebot-models/contact.model');
 const {getTypeContactByName}=require('../models/ymanebot-models/typeContact.model');
 
 async function getIdByName(name){
@@ -51,6 +51,6 @@ async function SaveContact(){
      console.log(error);
    }
 }
+ */
 
-
-module.exports={SaveContact}
+//module.exports={SaveContact}
