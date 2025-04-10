@@ -7,7 +7,7 @@ const chooseLanguage = {
   type: 'text',
   text: {
     preview_url: false,
-    body: `*Welcome to Camtrack ✨😃*\n \n Please choose a language:\n *0* for English\n *00* for French`,
+    body: `*Welcome to Ymane Driver ✨😃*\n \n Please choose a language:\n *0* for English\n *00* for French`,
   },
 };
 
@@ -17,7 +17,7 @@ const textMessage = (language) => {
       type: 'text',
       text: {
         preview_url: false,
-        body: `*Welcome to Camtrack ✨😃*\n \n Let us know how we can help you today by choosing from the folowing options:\n\n *1* For vehicle🚗 Location\n *2* Request a visit with a member\n *6* To take a survey`,
+        body: `*Welcome to Ymane Driver✨😃*\n \n Let us know how we can help you today by choosing from the folowing options:\n\n *1* For vehicle🚗 Location\n *2* Request a visit with a member\n *6* To take a survey`,
       },
     };
   }
@@ -27,7 +27,7 @@ const textMessage = (language) => {
       type: 'text',
       text: {
         preview_url: false,
-        body: `*Bienvenue chez Camtrack ✨😃* \n Faites-nous savoir comment nous pouvons vous aider aujourd'hui en choisissant parmi les options suivantes:\n *1* pour connaitre la position de votre véhicule🚗 \n *2* Pour demander une visite avec un de nos membres \n *6* Pour répondre à un sondage`,
+        body: `*Bienvenue chez Ymane Driver✨😃* \n Faites-nous savoir comment nous pouvons vous aider aujourd'hui en choisissant parmi les options suivantes:\n *1* pour connaitre la position de votre véhicule🚗 \n *2* Pour demander une visite avec un de nos membres \n *6* Pour répondre à un sondage`,
       },
     };
   }
