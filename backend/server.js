@@ -12,7 +12,7 @@ const app = require('./app');
 const server = http.createServer(app); */
 
 //production
-const PORT = process.env.PORT || 443;
+const PORT = process.env.PORT || 8443;
 
 const options = {
   key: fs.readFileSync('./ssl/camtrack_net.key'),
