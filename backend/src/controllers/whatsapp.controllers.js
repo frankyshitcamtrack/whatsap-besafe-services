@@ -291,7 +291,7 @@ async function onSendTemplateNotificationMultiple(req, res) {
 //sent consent message template function
 async function onSendConsent() {
   console.log('sending consent...');
-  const numbers = await ymaneListNumbers();
+  // const numbers = await ymaneListNumbers();
   const wialonContacts = await getWialonContacts();
   if (numbers.length > 0) {
     numbers.map(async (item) => {
