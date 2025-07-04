@@ -52,10 +52,10 @@ scheduleClock();
 
 getNumbers();
  */
-setInterval(() => {
+/* setInterval(() => {
   SaveContact();
 }, 3600000);
-
+ */
 //schedule consent message template every morning at 5h30
 cron.schedule(
   '30 6 * * *',
