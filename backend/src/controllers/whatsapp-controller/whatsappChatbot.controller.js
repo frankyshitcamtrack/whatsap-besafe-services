@@ -142,7 +142,7 @@ async function getPositionVehicleByDate(user) {
 
 //Send whatsapp message
 async function onSendMessages(req, res) {
-  //console.log(res);
+  console.log(req);
   try {
     if (
       req.body.object &&
@@ -232,97 +232,97 @@ async function onSendMessages(req, res) {
           case user.body === '1' &&
             user.previewMessage === 'start' &&
             user.flow === '': {
-            const firstMenu = textMessageMenu1(userLanguage);
-            user.previewMessage = user.body;
-            user.flow = '1';
-            await sendMessages(user.phoneId, user.phone, firstMenu.text.body);
-            break;
-          }
+              const firstMenu = textMessageMenu1(userLanguage);
+              user.previewMessage = user.body;
+              user.flow = '1';
+              await sendMessages(user.phoneId, user.phone, firstMenu.text.body);
+              break;
+            }
 
           case user.flow === '1' &&
             user.previewMessage === '1' &&
             user.body === '2': {
-            const askMatriculMessage = askImmatriculation(userLanguage);
-            await sendMessages(
-              user.phoneId,
-              user.phone,
-              askMatriculMessage.text.body
-            );
-            user.previewMessage = '2';
-            user.matriculeQuestionSent = true;
-            break;
-          }
+              const askMatriculMessage = askImmatriculation(userLanguage);
+              await sendMessages(
+                user.phoneId,
+                user.phone,
+                askMatriculMessage.text.body
+              );
+              user.previewMessage = '2';
+              user.matriculeQuestionSent = true;
+              break;
+            }
 
           case user.flow === '1' &&
             user.previewMessage === '1' &&
             user.body === '1' &&
             user.matriculeQuestionSent === false: {
-            const askMatriculMessage = askImmatriculation(userLanguage);
-            await sendMessages(
-              user.phoneId,
-              user.phone,
-              askMatriculMessage.text.body
-            );
-            user.matriculeQuestionSent = true;
-            user.previewMessage = '1';
-            break;
-          }
+              const askMatriculMessage = askImmatriculation(userLanguage);
+              await sendMessages(
+                user.phoneId,
+                user.phone,
+                askMatriculMessage.text.body
+              );
+              user.matriculeQuestionSent = true;
+              user.previewMessage = '1';
+              break;
+            }
 
           case user.flow === '1' &&
             user.previewMessage === '1' &&
             user.body !== '1' &&
             user.matriculeQuestionSent === false: {
-            const vehicleLocationMessage = textMessageMenu1(userLanguage);
-            await sendMessages(
-              user.phoneId,
-              user.phone,
-              vehicleLocationMessage.text.body
-            );
-            break;
-          }
+              const vehicleLocationMessage = textMessageMenu1(userLanguage);
+              await sendMessages(
+                user.phoneId,
+                user.phone,
+                vehicleLocationMessage.text.body
+              );
+              break;
+            }
 
           case user.flow === '1' &&
             user.previewMessage === '1' &&
             user.body !== '2' &&
             user.matriculeQuestionSent === false: {
-            const vehicleLocationMessage = textMessageMenu1(userLanguage);
-            await sendMessages(
-              user.phoneId,
-              user.phone,
-              vehicleLocationMessage.text.body
-            );
-            break;
-          }
+              const vehicleLocationMessage = textMessageMenu1(userLanguage);
+              await sendMessages(
+                user.phoneId,
+                user.phone,
+                vehicleLocationMessage.text.body
+              );
+              break;
+            }
 
           case user.flow === '1' &&
             user.previewMessage === '1' &&
             user.matriculeQuestionSent === true &&
             user.dateMessage === false: {
-            user.vehicleNumber = user.body.replace(/\s+/g, '');
-            await getPositionVehicule(user);
-            break;
-          }
+              user.vehicleNumber = user.body.replace(/\s+/g, '');
+              await getPositionVehicule(user);
+              break;
+            }
 
           case user.flow === '1' &&
             user.previewMessage === '2' &&
             user.matriculeQuestionSent === true &&
             user.dateMessage === false: {
-            let vehicleImmat = user.body;
-            user.vehicleNumber = vehicleImmat.replace(/\s+/g, '');
-            const dateMessage = askDateMessage(userLanguage);
-            await sendMessages(user.phoneId, user.phone, dateMessage.text.body);
-            user.dateMessage = true;
-            break;
-          }
+              let vehicleImmat = user.body;
+              user.vehicleNumber = vehicleImmat.replace(/\s+/g, '');
+              const dateMessage = askDateMessage(userLanguage);
+              await sendMessages(user.phoneId, user.phone, dateMessage.text.body);
+              user.dateMessage = true;
+              break;
+            }
 
           case user.flow === '1' &&
             user.previewMessage === '2' &&
             user.dateMessage === true &&
             user.matriculeQuestionSent === true: {
-            user.date = user.body;
-            await getPositionVehicleByDate(user);
-            break;
-          }
+              user.date = user.body;
+              await getPositionVehicleByDate(user);
+              break;
+            }
 
           case user.body === '2' &&
             user.previewMessage === 'start' &&
@@ -330,29 +330,29 @@ async function onSendMessages(req, res) {
             user.dateMessage === false &&
             user.matriculeQuestionSent === false &&
             user.scheduleMessageSent === false: {
-            user.previewMessage = user.body;
-            const dateAndTimeMessage = textMessage3(userLanguage);
-            await sendMessages(
-              user.phoneId,
-              user.phone,
-              dateAndTimeMessage.text.body
-            );
-            user.scheduleMessageSent = true;
-            break;
-          }
+              user.previewMessage = user.body;
+              const dateAndTimeMessage = textMessage3(userLanguage);
+              await sendMessages(
+                user.phoneId,
+                user.phone,
+                dateAndTimeMessage.text.body
+              );
+              user.scheduleMessageSent = true;
+              break;
+            }
 
           case user.previewMessage === '2' &&
             user.scheduleMessageSent === true &&
             user.flow === '' &&
             user.dateMessage === false &&
             user.matriculeQuestionSent === false: {
-            user.body = body;
-            const visit = scheduleMeeting(user.body, user.name, userLanguage);
-            await sendMessages(user.phoneId, user.phone, visit.text.body);
-            user.previewMessage = '';
-            user.scheduleMessageSent = false;
-            break;
-          }
+              user.body = body;
+              const visit = scheduleMeeting(user.body, user.name, userLanguage);
+              await sendMessages(user.phoneId, user.phone, visit.text.body);
+              user.previewMessage = '';
+              user.scheduleMessageSent = false;
+              break;
+            }
 
           default:
         }
